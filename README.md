@@ -1,4 +1,4 @@
-    **Advancement Minecraft AntiCheat Base**
+**Advancement Minecraft AntiCheat Base**
 
 _This project was created so that any person who cannot create a good base for anti-cheat or is just lazy can instantly get a convenient and easy-to-use base._
 
