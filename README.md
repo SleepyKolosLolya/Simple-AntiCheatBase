@@ -2,7 +2,7 @@
 
 _This project was created so that any person who cannot create a good base for anti-cheat or is just lazy can instantly get a convenient and easy-to-use base._
 
-Q: What is the advantage of this base?
+_Q: What is the advantage of this base?_
 
 **A: Let's try to highlight the main ones:**
 1) API. This base has ready to use Bukkit API, which contains a simple event flag system, and the ability to create your own check from another project.
@@ -12,14 +12,14 @@ Q: What is the advantage of this base?
 5) Easy to change. The base, despite its convenience and practicality, is easily changed, at any time you can remake the base for yourself without changing other components of the project.
 
 
-Q: What is the VL system?
+_Q: What is the VL system?_
 
-A: **Each check has its own violation value**
+**A: Each check has its own violation value**
 
 
-Q: How to add a Check?
+_Q: How to add a Check?_
 
-A: Ah, it's simple:
+**A: Ah, it's simple:**
 1) Create a class that extends Check.java
 2) Create constructor:
 ```java
