@@ -1,0 +1,49 @@
+# A Simple AC Base
+# Thank you for downloading! In this file you can customize any anticheat message.
+# Feedback:
+#  Developer's Discord server:               https://discord.gg/ChyYesv
+
+style: "new"
+
+
+# PlaceHolders:
+#  - "&" - § (you can use it for color codes)
+#  - "%prefix%" - anticheat prefix
+#  - " \" " - equivalent to ' " '
+#  - " \n " - equivalent to wrapping to the next line
+new:
+  prefix: "&6 AntiCheatBase&8 // "
+
+  help: "%prefix%&7Short help about anticheat commands:\n&7 - &c\"alerts\"&7 - AntiCheat starts notifying you \n&7 -&c \"debug\"&7 - AntiCheat starts debug the check"
+
+  # PlaceHolders:
+  #  - "%check%" - Check name
+  defaultKickMessage: "%prefix%&f%check%"
+
+  # PlaceHolders:
+  #  - "%player%" - Potential cheater
+  #  - "%check%" - Check name
+  #  - "%current_vl%" - The violation level for this check
+  alerts: "%prefix%&8f%player%%&%7 failed&f %check%&7. [&1x%current_vl%&7]"
+
+  # PlaceHolders:
+  #  - "%player%" - Potential cheater
+  #  - "%verbose%" - Debug message
+  debug: "&8[&cDEBUG&8] &7%verbose%"
+
+  # PlaceHolders:
+  #  - "%unknown_command%" - Text of wrong used command
+  unknownCommand: "%prefix%&fUnknown command \"&c%unknown_command%&f\".\n%prefix%&fUse &c\"/acb help\"&f to get command list."
+
+  # PlaceHolders:
+  #  - "%exp%" - Estimated command length
+  #  - "%args_length%" - Number of arguments
+  wrongNumberOfArguments: "%prefix%&fExpected: %exp% but got %args_length%"
+  noPermission: "%prefix%&cYou cannot use this"
+
+  onAlertsEnabled: "%prefix%&fAlerts was enabled"
+  onAlertsDisabled: "%prefix%&fAlerts was disabled"
+
+  onDebugEnabled: "%prefix%&fDebug was enabled"
+  onDebugDisabled: "%prefix%&fDebug was disabled"
+  unknownCheck: "%prefix%&fCould not find check&c \"%arg%\"&f."

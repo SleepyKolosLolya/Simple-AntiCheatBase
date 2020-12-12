@@ -1,0 +1,26 @@
+name: AntiCheatBase
+main: acname.ac.plugin.Main
+version: 0.0.1
+author: koloslolya
+
+commands:
+  acb:
+    description: Basic command for AC
+    usage: /<command>
+  acb alerts:
+    description: To enable alerts for player
+    usage: /<command>
+
+permissions:
+  acb.bypass:
+    description: Anticheat does not modules you
+    default: op
+  acb.debug:
+    description: AntiCheat can send debug msgs to the player
+    default: op
+  acb.alerts:
+    description: AntiCheat can send alerts to the player
+    default: op
+  acb.cmd:
+    description: Allows one to access help menu and GUI
+    default: op

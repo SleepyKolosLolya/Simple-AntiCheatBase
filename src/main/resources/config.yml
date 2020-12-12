@@ -1,0 +1,13 @@
+# A Simple AC Base
+# Thank you for downloading! In this file you can customize any anticheat function.
+# Feedback:
+#  Developer's Discord server:               https://discord.gg/ChyYesv
+
+bypassIngnore: true
+
+UTIL:
+  ExampleA:
+
+    banVL: 20
+    enabled: true
+    punishment: "say ExampleA"
