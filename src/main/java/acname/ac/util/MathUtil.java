@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MathUtil {
 
-    //---------------------------------{ быстрее чем на java 8 }---------------------------------
+    //---------------------------------{ Faster than JVM 8 }---------------------------------
     private static final double DEGREES_TO_RADIANS = 0.017453292519943295;
     private static final double RADIANS_TO_DEGREES = 57.29577951308232;
     private static final double TWO_MINUS_600 = 0x1.0p-600;
@@ -17,10 +17,8 @@ public class MathUtil {
     private static final long EXP_BIT_MASK = 0x7FF0000000000000L;
     private static final double INFINITY = Double.POSITIVE_INFINITY;
 
-    private MathUtil() { /*хуй*/}
-
-    public static float gcd0(float a, float b) {
-        return gcd0(((int) a), ((int) b));
+    public static float gcd(float a, float b) {
+        return gcd(((int) a), ((int) b));
     }
 
     /**
@@ -92,8 +90,10 @@ public class MathUtil {
             exception.printStackTrace();
         }
         return (float) Math.cos(radians);
-    }
+    }    private MathUtil() { /*хуй*/}
 
+
+    // Default Java method but more accurate
     public static strictfp double hypot(double x, double y) {
         double a = Math.abs(x);
         double b = Math.abs(y);
@@ -216,11 +216,16 @@ public class MathUtil {
         return angrad * RADIANS_TO_DEGREES;
     }
 
-    public static int gcd0(int a, int b) {
-        if (b == 0) {
+
+    public static int gcd(int a, int b) {
+        return gcd(0, a, b);
+    }
+
+    public static int gcd(int limit, int a, int b) {
+        if (b <= limit) {
             return a;
         }
-        if (a == 0) {
+        if (a <= limit) {
             return b;
         }
         // Right shift a & b till their last bits equal to 1.
@@ -244,7 +249,7 @@ public class MathUtil {
     }
 
     public static class RandomUtils {
-        //Канкаррент рандом
+        // Concurrent random
 
         public static int randomInt(int bound) {
             return ThreadLocalRandom.current().nextInt(bound);
