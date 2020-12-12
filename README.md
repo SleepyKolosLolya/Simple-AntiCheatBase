@@ -2,7 +2,7 @@
 
 _This project was created so that any person who cannot create a good base for anti-cheat or is just lazy can instantly get a convenient and easy-to-use base._
 
-<---                    --->
+```<---                    --->```
 
 _Q: What is the advantage of this base?_
 
@@ -13,13 +13,13 @@ _Q: What is the advantage of this base?_
 4) Packet Wrappers. Easy-to-understand AntiCheatEvent system, for which you do not need to know the entire MineCraft protocol.
 5) Easy to change. The base, despite its convenience and practicality, is easily changed, at any time you can remake the base for yourself without changing other components of the project.
 
-<---                    --->
+```<---                    --->```
 
 _Q: What is the VL system?_
 
 **A: Each check has its own violation value**
 
-<---                    --->
+```<---                    --->```
 
 _Q: How to add a Check?_
 
@@ -49,20 +49,33 @@ _Q: How to add a Check?_
     }
 ```
 
-<---                    --->
+```<---                    --->```
+
+Q: Should it only support 1.8?
+
+**A: No. You can use any version of the spigot with this base without fear of incompatibility with the version**
+
+
+```<---                    --->```
+
+Q: And what are the dependencies of this project?
+
+**A: You nee only latest Spigot jar and ProtocolLib for packet listeners.**
+
+```<---                    --->```
 
 Q: What about performance? There must be some problems?
 
 A: **This base was tested with ~15 common checks with stress test higher than 75 players and have stable 20 TPS!**
 
-<---                    --->
+```<---                    --->```
 
 _In the future:_
 1) There will be a stronger API part.
 2) Config Caching and Permission Caching.
 3) Complete TextComponent in verbose method.
 
-<---                    --->
+```<---                    --->```
 
 **To download you must just:**
 1) Download project from github.
