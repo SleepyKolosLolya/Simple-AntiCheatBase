@@ -3,9 +3,12 @@ package acname.ac.util;
 import com.google.common.collect.Iterables;
 import org.bukkit.util.Vector;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MathUtil {
+public final class MathUtil {
 
     //---------------------------------{ Faster than JVM 8 }---------------------------------
     private static final double DEGREES_TO_RADIANS = 0.017453292519943295;
@@ -90,8 +93,60 @@ public class MathUtil {
             exception.printStackTrace();
         }
         return (float) Math.cos(radians);
-    }    private MathUtil() { /*хуй*/}
+    }
 
+    private MathUtil() { /*хуй*/}
+
+    /**
+     * A much cleaner way of returning the distinct count
+     * Instead of using Streams
+     *
+     * @param list - The collection
+     * @return The distinct count
+     */
+    public static int getDistinct(final Collection<?> list) {
+        Set<Object> set = new HashSet<>(list);
+        return set.size();
+    }
+
+    /**
+     * Get the deviation of the Collection's inputs
+     *
+     * @param nums The collection
+     * @return The input's deviation
+     */
+    public static double getDeviation(final Collection<? extends Number> nums) {
+        double sum = 0;
+
+        for (Number num : nums) {
+
+            sum += num.doubleValue();
+        }
+
+        double mean = sum / nums.size();
+
+        double squareSum = 0;
+
+        for (Number num : nums) {
+
+            squareSum += Math.pow(num.doubleValue() - mean, 2);
+
+        }
+
+        return Math.sqrt((squareSum) / (nums.size() - 1));
+    }
+
+    /**
+     * Get if the input is between the specified minimum and maximum value
+     *
+     * @param input The input
+     * @param min   The minimum amount
+     * @param max   The maximum amount
+     * @return Whether or not the input is between min and max
+     */
+    public static boolean isBetween(final Number input, final Number min, final Number max) {
+        return input.doubleValue() >= min.doubleValue() && input.doubleValue() <= max.doubleValue();
+    }
 
     // Default Java method but more accurate
     public static strictfp double hypot(double x, double y) {

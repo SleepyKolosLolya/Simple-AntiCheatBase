@@ -9,7 +9,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 
-public class ChatManager {
+public final class ChatManager {
+
+    private ChatManager() {
+    }
 
     public static TextComponent generateVerboseLog(Data data, Check check, String verbose, double multiplier) {
         String style = Global.getLanguage().getString("style") + ".";
