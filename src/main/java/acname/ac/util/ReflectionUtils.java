@@ -8,7 +8,10 @@ import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ReflectionUtils {
+public final class ReflectionUtils {
+
+    private ReflectionUtils() {
+    }
 
     private static final Pattern COMPILE = Pattern.compile(".", Pattern.LITERAL);
     public static final String version = COMPILE.matcher(Bukkit.getServer().getClass().getPackage().getName()).replaceAll(Matcher.quoteReplacement(",")).split(",")[3] + ".";

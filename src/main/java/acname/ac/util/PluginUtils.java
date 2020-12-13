@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class PluginUtils implements Listener {
+public final class PluginUtils implements Listener {
 
     private static final Map<UUID, Data> dataMap;
 

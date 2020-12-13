@@ -4,7 +4,7 @@ import acname.ac.api.CheckType;
 import acname.ac.api.util.DevelopmentState;
 import acname.ac.features.modules.util.Check;
 import acname.ac.util.Data;
-import acname.ac.util.events.global.client.ClientFlying;
+import acname.ac.util.TaskUtil;
 import acname.ac.util.events.global.client.ClientSwing;
 import acname.ac.util.events.global.server.ServerVelocity;
 import acname.ac.util.events.util.AntiCheatEvent;
@@ -26,7 +26,7 @@ public class Example extends Check {
             }
 
         } else if (event instanceof ServerVelocity) {
-            debug(" Got velocity");
+            TaskUtil.taskAsync(() -> debug(" Got velocity"));
         }
     }
 
