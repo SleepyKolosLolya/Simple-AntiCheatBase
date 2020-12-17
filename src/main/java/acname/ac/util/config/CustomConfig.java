@@ -1,7 +1,7 @@
-package acname.ac.util;
+package acname.ac.util.config;
 
 
-import acname.ac.plugin.Global;
+import acname.ac.Global;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -23,7 +23,7 @@ public class CustomConfig {
         file = new File(Bukkit.getServer().getPluginManager().getPlugin(Global.FOLDER_NAME).getDataFolder(), this.fileName);
 
         if (!file.exists()) {
-            Global.plugin.saveResource(fileName, false);
+            Global.PLUGIN.saveResource(fileName, false);
         }
         setCustomFile(YamlConfiguration.loadConfiguration(file));
     }
