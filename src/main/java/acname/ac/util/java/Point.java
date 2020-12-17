@@ -1,4 +1,4 @@
-package acname.ac.util;
+package acname.ac.util.java;
 
 public class Point implements Cloneable {
     private double p1;

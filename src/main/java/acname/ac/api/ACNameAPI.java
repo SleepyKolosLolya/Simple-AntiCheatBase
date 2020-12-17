@@ -1,8 +1,8 @@
 package acname.ac.api;
 
 import acname.ac.api.util.LimitedDouble;
-import acname.ac.plugin.Global;
-import acname.ac.util.PluginUtils;
+import acname.ac.Global;
+import acname.ac.util.data.PluginUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -11,7 +11,7 @@ public class ACNameAPI {
     public static String BYPASS_PERMISSION = "acb.bypass";
 
     public static String getVersion() {
-        return Global.plugin.getDescription().getVersion();
+        return Global.PLUGIN.getDescription().getVersion();
     }
 
     public static String getBypassPermission() {
@@ -32,5 +32,6 @@ public class ACNameAPI {
         }
 
     }
+
 
 }

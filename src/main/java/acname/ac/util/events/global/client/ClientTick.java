@@ -1,6 +1,6 @@
 package acname.ac.util.events.global.client;
 
-import acname.ac.util.events.util.AntiCheatEvent;
+import acname.ac.util.events.AntiCheatEvent;
 import org.bukkit.entity.Player;
 
 public class ClientTick extends AntiCheatEvent {

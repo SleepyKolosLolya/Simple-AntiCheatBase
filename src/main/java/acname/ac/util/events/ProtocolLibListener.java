@@ -1,14 +1,13 @@
 package acname.ac.util.events;
 
-import acname.ac.plugin.Global;
-import acname.ac.util.LocationUtil;
-import acname.ac.util.PluginUtils;
+import acname.ac.Global;
+import acname.ac.util.world.LocationUtil;
+import acname.ac.util.data.PluginUtils;
 import acname.ac.util.events.global.client.*;
 import acname.ac.util.events.global.client.inventory.ClientClickWindow;
 import acname.ac.util.events.global.client.inventory.ClientCloseWindow;
 import acname.ac.util.events.global.client.inventory.ClientOpenWindow;
 import acname.ac.util.events.global.server.*;
-import acname.ac.util.events.util.AntiCheatEvent;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
@@ -43,20 +42,20 @@ public class ProtocolLibListener {
 
     private void init() {
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.USE_ENTITY) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.USE_ENTITY) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 int id = event.getPacket().getIntegers().read(0);
-                // Some modules can be broken bc of this shit so yes you need to kick player if (id <= 0)
-                if (id < 0) {
-                    Bukkit.getScheduler().runTask(Global.plugin, () -> event.getPlayer().kickPlayer("Impossible"));
+                // Some checks can be broken bc of this shit so yes you need to kick player if (id <= 0)
+                if (id <= 0) {
+                    Bukkit.getScheduler().runTask(Global.PLUGIN, () -> event.getPlayer().kickPlayer("null"));
                     return;
                 }
                 handle(new ClientUseEntity(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.FLYING, PacketType.Play.Client.POSITION, PacketType.Play.Client.POSITION_LOOK, PacketType.Play.Client.LOOK) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.FLYING, PacketType.Play.Client.POSITION, PacketType.Play.Client.POSITION_LOOK, PacketType.Play.Client.LOOK) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 if (event.getPlayer() == null) return;
@@ -67,14 +66,14 @@ public class ProtocolLibListener {
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.ENTITY_ACTION) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.ENTITY_ACTION) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientAction(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.TRANSACTION) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.TRANSACTION) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientTransaction(event));
@@ -92,49 +91,49 @@ public class ProtocolLibListener {
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Server.TRANSACTION) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Server.TRANSACTION) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 handle(new ServerTransaction(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.ABILITIES) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.ABILITIES) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientAbilities(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Server.ABILITIES) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Server.ABILITIES) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 handle(new ServerAbilities(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.USE_ENTITY) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.USE_ENTITY) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientUseEntity(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.ARM_ANIMATION) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.ARM_ANIMATION) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientSwing(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.BLOCK_DIG) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.BLOCK_DIG) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientBlockDig(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Server.ENTITY_VELOCITY) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Server.ENTITY_VELOCITY) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 if (event.getPlayer().getEntityId() == event.getPacket().getIntegers().read(0)) {
@@ -143,42 +142,42 @@ public class ProtocolLibListener {
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.KEEP_ALIVE) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.KEEP_ALIVE) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientKeepAlive(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Server.KEEP_ALIVE) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Server.KEEP_ALIVE) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 handle(new ServerKeepAlive(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Server.OPEN_WINDOW) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Server.OPEN_WINDOW) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 handle(new ClientOpenWindow(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.CLOSE_WINDOW) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.CLOSE_WINDOW) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientCloseWindow(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.WINDOW_CLICK) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.WINDOW_CLICK) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientClickWindow(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Server.POSITION) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Server.POSITION) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 handle(new ServerTeleport(event));
@@ -186,7 +185,7 @@ public class ProtocolLibListener {
         });
 
         if (PluginUtils.getVersion().equals(PluginUtils.ServerVersion.v1_12_R1)) {
-            protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.TELEPORT_ACCEPT) {
+            protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.TELEPORT_ACCEPT) {
                 @Override
                 public void onPacketReceiving(PacketEvent event) {
                     handle(new ClientTeleportAccept(event));
@@ -194,28 +193,28 @@ public class ProtocolLibListener {
             });
         }
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.BLOCK_PLACE) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.BLOCK_PLACE) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientBlockPlace(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.USE_ITEM) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.USE_ITEM) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientUseItem(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.HELD_ITEM_SLOT) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.HELD_ITEM_SLOT) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientSlotChange(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST,
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST,
                 PacketType.Play.Server.REL_ENTITY_MOVE,
                 PacketType.Play.Server.REL_ENTITY_MOVE_LOOK,
                 PacketType.Play.Server.ENTITY_LOOK
@@ -226,14 +225,14 @@ public class ProtocolLibListener {
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Server.ENTITY_TELEPORT) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Server.ENTITY_TELEPORT) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 handle(new ServerEntityTeleport(event));
             }
         });
 
-        protocolManager.addPacketListener(new PacketAdapter(Global.plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.SETTINGS) {
+        protocolManager.addPacketListener(new PacketAdapter(Global.PLUGIN, ListenerPriority.HIGHEST, PacketType.Play.Client.SETTINGS) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 handle(new ClientSettings(event));
@@ -248,7 +247,7 @@ public class ProtocolLibListener {
      * @author Maxsimus
      */
     public void tickProcessor19() {
-        Bukkit.getScheduler().runTaskAsynchronously(Global.plugin, () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(Global.PLUGIN, () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 handle(new ServerTick(p));
 

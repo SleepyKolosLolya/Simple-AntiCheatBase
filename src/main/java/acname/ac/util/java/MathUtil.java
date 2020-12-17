@@ -1,5 +1,6 @@
-package acname.ac.util;
+package acname.ac.util.java;
 
+import acname.ac.util.bukkit.ReflectionUtils;
 import com.google.common.collect.Iterables;
 import org.bukkit.util.Vector;
 
@@ -10,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class MathUtil {
 
-    //---------------------------------{ Faster than JVM 8 }---------------------------------
+    // ---------------------------------{ Faster than JVM 8 }--------------------------------- //
     private static final double DEGREES_TO_RADIANS = 0.017453292519943295;
     private static final double RADIANS_TO_DEGREES = 57.29577951308232;
     private static final double TWO_MINUS_600 = 0x1.0p-600;
@@ -95,7 +96,7 @@ public final class MathUtil {
         return (float) Math.cos(radians);
     }
 
-    private MathUtil() { /*хуй*/}
+    private MathUtil() { /* Empty */ }
 
     /**
      * A much cleaner way of returning the distinct count
@@ -112,28 +113,20 @@ public final class MathUtil {
     /**
      * Get the deviation of the Collection's inputs
      *
-     * @param nums The collection
+     * @param numberCollection (Collection<? extends Number>) The collection
      * @return The input's deviation
      */
-    public static double getDeviation(final Collection<? extends Number> nums) {
+    public static double getDeviation(final Collection<? extends Number> numberCollection) {
         double sum = 0;
 
-        for (Number num : nums) {
+        for (Number num : numberCollection) sum += num.doubleValue();
 
-            sum += num.doubleValue();
-        }
-
-        double mean = sum / nums.size();
-
+        double mean = sum / numberCollection.size();
         double squareSum = 0;
 
-        for (Number num : nums) {
+        for (Number num : numberCollection) squareSum += Math.pow(num.doubleValue() - mean, 2);
 
-            squareSum += Math.pow(num.doubleValue() - mean, 2);
-
-        }
-
-        return Math.sqrt((squareSum) / (nums.size() - 1));
+        return Math.sqrt((squareSum) / (numberCollection.size() - 1));
     }
 
     /**
@@ -271,7 +264,6 @@ public final class MathUtil {
         return angrad * RADIANS_TO_DEGREES;
     }
 
-
     public static int gcd(int a, int b) {
         return gcd(0, a, b);
     }
@@ -332,7 +324,7 @@ public final class MathUtil {
 
         public static float randomFloat(float bound) {
             if (bound <= 0.0F) {
-                throw new IllegalArgumentException("граница должна быть положительной");
+                throw new IllegalArgumentException("the border must be greater than zero");
             }
             float result = ThreadLocalRandom.current().nextFloat() * bound;
             return (result < bound) ? result : // correct for rounding
@@ -341,7 +333,7 @@ public final class MathUtil {
 
         public static float randomFloat(float origin, float bound) {
             if (origin >= bound) {
-                throw new IllegalArgumentException("граница должна быть больше начала");
+                throw new IllegalArgumentException("The border must be greater than the beginning");
             }
             float r = ThreadLocalRandom.current().nextFloat();
             if (origin < bound) {

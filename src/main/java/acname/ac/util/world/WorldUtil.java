@@ -1,5 +1,6 @@
-package acname.ac.util;
+package acname.ac.util.world;
 
+import acname.ac.util.world.LocationUtil;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;

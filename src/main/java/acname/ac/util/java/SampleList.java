@@ -1,4 +1,4 @@
-package acname.ac.util;
+package acname.ac.util.java;
 
 import java.util.LinkedList;
 

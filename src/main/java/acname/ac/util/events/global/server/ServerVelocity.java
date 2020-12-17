@@ -1,7 +1,7 @@
 package acname.ac.util.events.global.server;
 
-import acname.ac.util.MathUtil;
-import acname.ac.util.events.util.AntiCheatEvent;
+import acname.ac.util.java.MathUtil;
+import acname.ac.util.events.AntiCheatEvent;
 import com.comphenix.protocol.events.PacketEvent;
 
 public class ServerVelocity extends AntiCheatEvent {

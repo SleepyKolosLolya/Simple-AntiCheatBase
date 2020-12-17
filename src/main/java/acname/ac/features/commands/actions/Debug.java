@@ -1,11 +1,11 @@
 package acname.ac.features.commands.actions;
 
 import acname.ac.features.commands.AbstractCommand;
-import acname.ac.features.modules.util.Check;
-import acname.ac.plugin.Global;
-import acname.ac.util.ChatManager;
-import acname.ac.util.Data;
-import acname.ac.util.PluginUtils;
+import acname.ac.features.checks.Check;
+import acname.ac.Global;
+import acname.ac.util.chat.ChatManager;
+import acname.ac.util.data.Data;
+import acname.ac.util.data.PluginUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -55,7 +55,7 @@ public class Debug extends AbstractCommand {
                 );
             }
         } else {
-            Global.logger.info(ChatManager.LanguageAccess.prefix() + "You can't execute this command in console");
+            Global.LOGGER.info(ChatManager.LanguageAccess.prefix() + "You can't execute this command in console");
             return true;
         }
         return true;

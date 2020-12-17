@@ -1,6 +1,6 @@
 package acname.ac.util.events.global.client;
 
-import acname.ac.util.events.util.AntiCheatEvent;
+import acname.ac.util.events.AntiCheatEvent;
 import com.comphenix.protocol.events.PacketEvent;
 
 public class ClientAbilities extends AntiCheatEvent {

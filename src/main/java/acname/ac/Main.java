@@ -1,8 +1,8 @@
-package acname.ac.plugin;
+package acname.ac;
 
 import acname.ac.features.commands.ACCommandExecutor;
-import acname.ac.util.CustomConfig;
-import acname.ac.util.PluginUtils;
+import acname.ac.util.config.CustomConfig;
+import acname.ac.util.data.PluginUtils;
 import acname.ac.util.events.ProtocolLibListener;
 import acname.ac.util.tasks.ServerLag;
 import acname.ac.util.tasks.TPS;
@@ -24,17 +24,17 @@ public class Main extends JavaPlugin {
 
         updateGlobalValues();
 
-        Global.tpsCounter.init();
-        Global.svlag.init();
+        Global.TPS_COUNTER.init();
+        Global.SERVER_LAG.init();
 
-        Global.plugin.getServer().getPluginManager().registerEvents(new PluginUtils(), Global.plugin);
+        Global.PLUGIN.getServer().getPluginManager().registerEvents(new PluginUtils(), Global.PLUGIN);
 
         configSetup();
 
         pll = new ProtocolLibListener();
 
-        requireNonNull(getServer().getPluginCommand(PLUGIN_COMMAND)).setExecutor(new ACCommandExecutor());
-        requireNonNull(this.getCommand(PLUGIN_COMMAND)).setExecutor(new ACCommandExecutor());
+        getServer().getPluginCommand(PLUGIN_COMMAND).setExecutor(new ACCommandExecutor());
+        this.getCommand(PLUGIN_COMMAND).setExecutor(new ACCommandExecutor());
 
         log.info("AC Base Enabled!");
     }
@@ -46,13 +46,12 @@ public class Main extends JavaPlugin {
 
     private void updateGlobalValues() {
 
-        Global.plugin = this;
-        Global.logger = log;
+        Global.PLUGIN = this;
+        Global.LOGGER = log;
         Global.MAIN_THREAD = Thread.currentThread();
-        Global.tpsCounter = new TPS();
-        Global.svlag = new ServerLag();
+        Global.TPS_COUNTER = new TPS();
+        Global.SERVER_LAG = new ServerLag();
         Global.FOLDER_NAME = this.FOLDER_NAME;
-
 
     }
 
@@ -61,11 +60,11 @@ public class Main extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
 
-        Global.language = new CustomConfig("language.yml");
-        Global.language.setup();
+        Global.LANGUAGE = new CustomConfig("language.yml");
+        Global.LANGUAGE.setup();
 
-        Global.config = new CustomConfig("config.yml");
-        Global.config.setup();
+        Global.CONFIG = new CustomConfig("config.yml");
+        Global.CONFIG.setup();
 
     }
 }

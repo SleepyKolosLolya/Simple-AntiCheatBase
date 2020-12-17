@@ -1,6 +1,6 @@
 package acname.ac.util.tasks;
 
-import acname.ac.plugin.Global;
+import acname.ac.Global;
 import org.bukkit.Bukkit;
 
 public class TPS {
@@ -12,7 +12,7 @@ public class TPS {
     }
 
     public void init() {
-        Bukkit.getServer().getScheduler().runTaskTimer(Global.plugin, new Runnable() {
+        Bukkit.getServer().getScheduler().runTaskTimer(Global.PLUGIN, new Runnable() {
 
             long secStart;
             long secEnd;

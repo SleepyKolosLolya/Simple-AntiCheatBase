@@ -1,7 +1,7 @@
 package acname.ac.util.events.global.server;
 
-import acname.ac.util.WorldUtil;
-import acname.ac.util.events.util.AntiCheatEvent;
+import acname.ac.util.world.WorldUtil;
+import acname.ac.util.events.AntiCheatEvent;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.PacketEvent;
 import org.bukkit.entity.Entity;

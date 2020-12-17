@@ -1,4 +1,4 @@
-package acname.ac.util;
+package acname.ac.util.bukkit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -67,6 +67,51 @@ public final class ReflectionUtils {
         }
 
         return 1000;
+    }
+
+    public static Field getField(Class<?> object, String field) {
+        try {
+            Field fieldObject = object.getField(field);
+            fieldObject.setAccessible(true);
+            return fieldObject;
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Object getInvokedField(Field field, Object object) {
+        try {
+            field.setAccessible(true);
+            return field.get(object);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Object getInvokedMethod(Method method, Object object, Object... args) {
+        try {
+            method.setAccessible(true);
+            return method.invoke(object, args);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Method getMethod(Class<?> object, String method, Class<?>... args) {
+        try {
+            Method methodObject = object.getMethod(method, args);
+
+            methodObject.setAccessible(true);
+
+            return methodObject;
+
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

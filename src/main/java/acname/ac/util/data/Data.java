@@ -1,8 +1,11 @@
-package acname.ac.util;
+package acname.ac.util.data;
 
-import acname.ac.features.modules.impl.Example;
-import acname.ac.features.modules.util.Check;
-import acname.ac.util.events.util.AntiCheatEvent;
+import acname.ac.api.ACNameCheckAPI;
+import acname.ac.api.util.DevelopmentState;
+import acname.ac.api.util.LimitedDouble;
+import acname.ac.features.checks.impl.Example;
+import acname.ac.features.checks.Check;
+import acname.ac.util.events.AntiCheatEvent;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 

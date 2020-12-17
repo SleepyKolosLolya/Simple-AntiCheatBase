@@ -1,7 +1,7 @@
 package acname.ac.features.commands.actions;
 
 import acname.ac.features.commands.AbstractCommand;
-import acname.ac.util.ChatManager;
+import acname.ac.util.chat.ChatManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;

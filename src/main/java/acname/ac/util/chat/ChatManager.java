@@ -1,7 +1,8 @@
-package acname.ac.util;
+package acname.ac.util.chat;
 
-import acname.ac.features.modules.util.Check;
-import acname.ac.plugin.Global;
+import acname.ac.features.checks.Check;
+import acname.ac.Global;
+import acname.ac.util.data.Data;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;
@@ -31,14 +32,14 @@ public final class ChatManager {
     public static String placeholder(String str, Data data, @NotNull Check check) {
         str = colorCodes(str);
         str = prefixReplace(str);
-        str = str.replace("%player%", Objects.requireNonNull(data.player.getName()));
+        str = str.replace("%player%", Objects.requireNonNull(data.getPlayer().getName()));
         str = str.replace("%check%", check.getVerboseName());
         str = str.replace("%current_vl%", data.checkFinder(check.getClass()).getVL().getValue() + "");
         return str;
     }
 
     public static String colorCodes(String str) {
-        Global.logger.info(str);
+        Global.LOGGER.info(str);
         return ChatColor.translateAlternateColorCodes('&', str);
     }
 
@@ -57,7 +58,7 @@ public final class ChatManager {
         }
 
         public static String getString(String str) {
-            Global.logger.info(Global.getLanguage().getString("style") + "." + str);
+            Global.LOGGER.info(Global.getLanguage().getString("style") + "." + str);
             return colorCodes(Global.getLanguage().getString(Global.getLanguage().getString("style") + "." + str));
         }
 

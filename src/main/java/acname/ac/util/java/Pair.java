@@ -1,4 +1,4 @@
-package acname.ac.util;
+package acname.ac.util.java;
 
 public class Pair<T, Y> {
 

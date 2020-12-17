@@ -1,5 +1,5 @@
 name: AntiCheatBase
-main: acname.ac.plugin.Main
+main: acname.ac.Main
 version: 0.0.1
 author: koloslolya
 
@@ -13,7 +13,7 @@ commands:
 
 permissions:
   acb.bypass:
-    description: Anticheat does not modules you
+    description: Anticheat does not checks you
     default: op
   acb.debug:
     description: AntiCheat can send debug msgs to the player

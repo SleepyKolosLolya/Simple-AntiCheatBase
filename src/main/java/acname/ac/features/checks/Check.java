@@ -1,14 +1,14 @@
-package acname.ac.features.modules.util;
+package acname.ac.features.checks;
 
 import acname.ac.api.ACNameAPI;
 import acname.ac.api.ACNameCheckAPI;
 import acname.ac.api.CheckType;
 import acname.ac.api.util.DevelopmentState;
 import acname.ac.api.util.LimitedDouble;
-import acname.ac.plugin.Global;
-import acname.ac.util.ChatManager;
-import acname.ac.util.Data;
-import acname.ac.util.events.util.AntiCheatEvent;
+import acname.ac.Global;
+import acname.ac.util.chat.ChatManager;
+import acname.ac.util.data.Data;
+import acname.ac.util.events.AntiCheatEvent;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.PacketContainer;
 import org.bukkit.Bukkit;
@@ -55,7 +55,7 @@ public abstract class Check extends Global {
         packet.getBooleans().write(0, false);
 
         try {
-            Global.pm.sendServerPacket(getData().getPlayer(), packet);
+            Global.PROTOCOL_MANAGER.sendServerPacket(getData().getPlayer(), packet);
             awaiting.put(id, ace);
         } catch (InvocationTargetException ex) {
             ex.printStackTrace();

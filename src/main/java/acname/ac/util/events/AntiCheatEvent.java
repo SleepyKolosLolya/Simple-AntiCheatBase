@@ -1,4 +1,4 @@
-package acname.ac.util.events.util;
+package acname.ac.util.events;
 
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;

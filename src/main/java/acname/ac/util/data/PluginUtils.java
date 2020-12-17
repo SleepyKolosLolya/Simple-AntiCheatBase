@@ -1,8 +1,9 @@
-package acname.ac.util;
+package acname.ac.util.data;
 
-import acname.ac.features.modules.util.Check;
-import acname.ac.plugin.Global;
-import acname.ac.util.events.util.AntiCheatEvent;
+import acname.ac.features.checks.Check;
+import acname.ac.Global;
+import acname.ac.util.chat.ChatManager;
+import acname.ac.util.events.AntiCheatEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -41,7 +42,7 @@ public final class PluginUtils implements Listener {
         c.getVL().addValue(multiplier);
 
         if ((int) check.getVL().getValue() == check.getBanVL()) {
-            Bukkit.getScheduler().runTask(Global.plugin, () -> {
+            Bukkit.getScheduler().runTask(Global.PLUGIN, () -> {
                 Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), check.getPunishment());
             });
         }

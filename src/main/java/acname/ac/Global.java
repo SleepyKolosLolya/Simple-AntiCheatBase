@@ -1,6 +1,6 @@
-package acname.ac.plugin;
+package acname.ac;
 
-import acname.ac.util.CustomConfig;
+import acname.ac.util.config.CustomConfig;
 import acname.ac.util.tasks.ServerLag;
 import acname.ac.util.tasks.TPS;
 import com.comphenix.protocol.ProtocolLibrary;
@@ -11,21 +11,23 @@ import org.bukkit.plugin.Plugin;
 import java.util.logging.Logger;
 
 public class Global {
-    public static ProtocolManager pm = ProtocolLibrary.getProtocolManager();
+
+    public static ProtocolManager PROTOCOL_MANAGER = ProtocolLibrary.getProtocolManager();
     public static Thread MAIN_THREAD;
     public static String FOLDER_NAME;
-    public static TPS tpsCounter;
-    public static ServerLag svlag;
-    public static Plugin plugin;
-    public static CustomConfig language;
-    public static CustomConfig config;
-    public static Logger logger;
+    public static TPS TPS_COUNTER;
+    public static ServerLag SERVER_LAG;
+    public static Plugin PLUGIN;
+    public static CustomConfig LANGUAGE;
+    public static CustomConfig CONFIG;
+    public static Logger LOGGER;
 
     public static FileConfiguration getConfig() {
-        return config.get();
+        return CONFIG.get();
     }
 
     public static FileConfiguration getLanguage() {
-        return language.get();
+        return LANGUAGE.get();
     }
+
 }

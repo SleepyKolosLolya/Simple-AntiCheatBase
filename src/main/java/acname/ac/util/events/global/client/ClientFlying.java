@@ -1,10 +1,10 @@
 package acname.ac.util.events.global.client;
 
-import acname.ac.util.Data;
-import acname.ac.util.LocationUtil;
-import acname.ac.util.MathUtil;
-import acname.ac.util.PluginUtils;
-import acname.ac.util.events.util.AntiCheatEvent;
+import acname.ac.util.data.Data;
+import acname.ac.util.world.LocationUtil;
+import acname.ac.util.java.MathUtil;
+import acname.ac.util.data.PluginUtils;
+import acname.ac.util.events.AntiCheatEvent;
 import com.comphenix.protocol.events.PacketEvent;
 import org.bukkit.Location;
 import org.bukkit.World;
