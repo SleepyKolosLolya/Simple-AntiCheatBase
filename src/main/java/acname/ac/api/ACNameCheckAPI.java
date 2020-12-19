@@ -1,10 +1,7 @@
 package acname.ac.api;
 
-import acname.ac.api.util.DevelopmentState;
-import acname.ac.api.util.LimitedDouble;
+import acname.ac.api.util.LimitedFloat;
 import acname.ac.features.checks.Check;
-import acname.ac.util.data.PluginUtils;
-import acname.ac.util.events.AntiCheatEvent;
 import org.bukkit.entity.Player;
 
 public class ACNameCheckAPI {
@@ -19,7 +16,7 @@ public class ACNameCheckAPI {
         return check.getData().getPlayer();
     }
 
-    public LimitedDouble<? extends Number> getVL() {
+    public LimitedFloat getVL() {
         return check.getVL();
     }
 

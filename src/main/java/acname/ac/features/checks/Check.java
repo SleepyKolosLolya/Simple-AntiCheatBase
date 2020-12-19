@@ -4,7 +4,7 @@ import acname.ac.api.ACNameAPI;
 import acname.ac.api.ACNameCheckAPI;
 import acname.ac.api.CheckType;
 import acname.ac.api.util.DevelopmentState;
-import acname.ac.api.util.LimitedDouble;
+import acname.ac.api.util.LimitedFloat;
 import acname.ac.Global;
 import acname.ac.util.chat.ChatManager;
 import acname.ac.util.data.Data;
@@ -30,7 +30,7 @@ public abstract class Check extends Global {
     private final String configName;
     private final DevelopmentState developmentState;
     public boolean debug;
-    private LimitedDouble<Float> VL;
+    private LimitedFloat VL;
 
     public Check(Data data, CheckType checkType, String verboseName, String configName, DevelopmentState developmentState) {
         this.data = data;
@@ -83,11 +83,11 @@ public abstract class Check extends Global {
         return developmentState;
     }
 
-    public LimitedDouble<? extends Number> getVL() {
+    public LimitedFloat getVL() {
         return VL;
     }
 
-    public void setVL(LimitedDouble<Float> VL) {
+    public void setVL(LimitedFloat VL) {
         this.VL = VL;
     }
 
@@ -101,7 +101,7 @@ public abstract class Check extends Global {
         flag("", 1);
     }
 
-    public void flag(String verbose, double multiplier) {
+    public void flag(String verbose, float multiplier) {
         ACNameAPI.flag(false, this.data.getPlayer(), this.getCheckAPI(), multiplier, verbose);
     }
 
@@ -147,8 +147,8 @@ public abstract class Check extends Global {
         return Global.getConfig().getInt(getConfigLocation() + ".banVL");
     }
 
-    public void setBanVL(double banVL) {
-        VL = new LimitedDouble<>(0F, banVL);
+    public void setBanVL(float banVL) {
+        VL = new LimitedFloat(0F, banVL);
     }
 
     public boolean isEnabled() {

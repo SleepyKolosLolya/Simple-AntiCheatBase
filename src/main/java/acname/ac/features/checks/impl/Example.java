@@ -13,13 +13,13 @@ public class Example extends Check {
 
     public int clicked = 0;
 
-    public Example(Data data) {
+    public Example(final Data data) {
         super(data, CheckType.UTIL, "Example (A)", "ExampleA", DevelopmentState.DEVELOPMENT);
+        setBanVL(getBanVL());
     }
 
-
     @Override
-    public void process(AntiCheatEvent event) {
+    public void process(final AntiCheatEvent event) {
         if (event instanceof ClientSwing) {
 
             if (clicked++ > 20) {
@@ -27,9 +27,7 @@ public class Example extends Check {
             }
 
         } else if (event instanceof ServerVelocity) {
-
-            debug("Got velocity");
-
+            debug("vel=" + ((ServerVelocity) event).getVelocity().toString());
         }
     }
 

@@ -362,6 +362,15 @@ public final class MathUtil {
         double y;
         double z;
 
+        @Override
+        public String toString() {
+            return "Velocity{" +
+                    "x=" + x +
+                    ", y=" + y +
+                    ", z=" + z +
+                    '}';
+        }
+
         public Velocity(double x, double y, double z) {
             this.x = x / 8000D;
             this.y = y / 8000D;

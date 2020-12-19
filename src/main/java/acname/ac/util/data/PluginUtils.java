@@ -27,9 +27,9 @@ public final class PluginUtils implements Listener {
         return ServerVersion.valueOf(Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3]);
     }
 
-    public static void flag(Check check, Number multiplier, Data data, String verbose) {
+    public static void flag(final Check check, final float multiplier, final Data data, final String verbose) {
 
-        TextComponent msg = ChatManager.generateVerboseLog(data, check, verbose, (Double) multiplier);
+        TextComponent msg = ChatManager.generateVerboseLog(data, check, verbose, multiplier);
 
         for (Player on : Bukkit.getOnlinePlayers()) {
             if (on.hasPermission("abc.alerts")) {
@@ -37,7 +37,7 @@ public final class PluginUtils implements Listener {
             }
         }
 
-        Check c = data.checkFinder(Check.class);
+        Check c = data.checkFinder(check.getClass());
 
         c.getVL().addValue(multiplier);
 

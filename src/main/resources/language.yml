@@ -24,7 +24,7 @@ new:
   #  - "%player%" - Potential cheater
   #  - "%check%" - Check name
   #  - "%current_vl%" - The violation level for this check
-  alerts: "%prefix%&8f%player%%&%7 failed&f %check%&7. [&1x%current_vl%&7]"
+  alerts: "%prefix%&f%player%&7 failed&f %check%&7. [&7x%current_vl%&7]"
 
   # PlaceHolders:
   #  - "%player%" - Potential cheater

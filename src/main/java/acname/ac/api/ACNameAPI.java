@@ -1,6 +1,6 @@
 package acname.ac.api;
 
-import acname.ac.api.util.LimitedDouble;
+import acname.ac.api.util.LimitedFloat;
 import acname.ac.Global;
 import acname.ac.util.data.PluginUtils;
 import org.bukkit.Bukkit;
@@ -18,11 +18,11 @@ public class ACNameAPI {
         return BYPASS_PERMISSION;
     }
 
-    public static LimitedDouble<? extends Number> getVLManager(Player pl, ACNameCheckAPI checkAPI) {
+    public static LimitedFloat getVLManager(Player pl, ACNameCheckAPI checkAPI) {
         return PluginUtils.getDataByUUID(pl.getUniqueId()).checkFinder(checkAPI.check.getConfigName()).getVL();
     }
 
-    public static void flag(boolean ignoreBypass, Player pl, ACNameCheckAPI checkAPI, Number vl, String verbose) {
+    public static void flag(boolean ignoreBypass, Player pl, ACNameCheckAPI checkAPI, float vl, String verbose) {
 
         ACNameFlagEvent flagEvent = new ACNameFlagEvent(pl, checkAPI, verbose, vl);
 

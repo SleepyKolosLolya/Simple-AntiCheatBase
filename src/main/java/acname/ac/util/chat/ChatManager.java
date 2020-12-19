@@ -15,9 +15,9 @@ public final class ChatManager {
     private ChatManager() {
     }
 
-    public static TextComponent generateVerboseLog(Data data, Check check, String verbose, double multiplier) {
+    public static TextComponent generateVerboseLog(Data data, Check check, String verbose, float multiplier) {
         String style = Global.getLanguage().getString("style") + ".";
-        TextComponent mainMessage = new TextComponent(placeholder(Global.getLanguage().getString(style + "alert"), data, check));
+        TextComponent mainMessage = new TextComponent(placeholder(Global.getLanguage().getString(style + "alerts"), data, check));
         // TODO: Complete this code
         return mainMessage;
     }
@@ -39,7 +39,6 @@ public final class ChatManager {
     }
 
     public static String colorCodes(String str) {
-        Global.LOGGER.info(str);
         return ChatColor.translateAlternateColorCodes('&', str);
     }
 
@@ -58,7 +57,6 @@ public final class ChatManager {
         }
 
         public static String getString(String str) {
-            Global.LOGGER.info(Global.getLanguage().getString("style") + "." + str);
             return colorCodes(Global.getLanguage().getString(Global.getLanguage().getString("style") + "." + str));
         }
 
