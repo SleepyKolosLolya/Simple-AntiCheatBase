@@ -8,6 +8,24 @@ _Q: What is the advantage of this base?_
 
 **A: Let's try to highlight the main ones:**
 1) API. This base has ready to use Bukkit API, which contains a simple event flag system, and the ability to create your own check from another project.
+```java
+    @EventHandler
+    public void onFlag(ACNameFlagEvent acEvent) {
+        
+        ACNameCheckAPI checkAPI = acEvent.getCheckAPI();
+        
+        System.out.println(
+            String.format("player=%s, checkType=%s, checkName=%s", 
+                checkAPI.getPlayer().getCustomName(),
+                checkAPI.getCheckType(),
+                checkAPI.getChatName()
+            )
+        );
+        
+        // Output: player=koloslolya, checkType=UTIL, checkName=Example (A)
+    }
+
+```
 2) Command Manager. Convenient command creation system and ready-made language utils.
 3) Theme Manager. The user can easily change any anti-cheat message at any time.
 4) Packet Wrappers. Easy-to-understand AntiCheatEvent system, for which you do not need to know the entire MineCraft protocol.
