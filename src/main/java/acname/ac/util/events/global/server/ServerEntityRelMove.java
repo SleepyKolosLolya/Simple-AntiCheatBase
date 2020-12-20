@@ -32,8 +32,8 @@ public class ServerEntityRelMove extends AntiCheatEvent {
 
         if (packetEvent.getPacketType().equals(PacketType.Play.Server.REL_ENTITY_MOVE_LOOK) ||
                 packetEvent.getPacketType().equals(PacketType.Play.Server.ENTITY_LOOK)) {
-            yaw = packetEvent.getPacket().getFloat().read(0);
-            pitch = packetEvent.getPacket().getFloat().read(1);
+            yaw = (packetEvent.getPacket().getBytes().read(0) * 360F) / 256F;
+            pitch = (packetEvent.getPacket().getBytes().read(0) * 360F) / 256F;
         } else if (entity != null) {
             yaw = entity.getLocation().getYaw();
             pitch = entity.getLocation().getPitch();
