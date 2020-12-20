@@ -11,8 +11,6 @@ public class ServerEntityTeleport extends AntiCheatEvent {
     final PacketType pt;
     final Entity entity;
     final boolean onGround;
-    final float yaw;
-    final float pitch;
     final int posX;
     final int posY;
     final int posZ;
@@ -25,8 +23,6 @@ public class ServerEntityTeleport extends AntiCheatEvent {
         entity = WorldUtil.findEntity(packetEvent.getPlayer().getWorld(), packetEvent.getPacket().getIntegers().read(0));
 
         onGround = getPacket().getBooleans().read(0);
-        yaw = getPacket().getFloat().read(0);
-        pitch = getPacket().getFloat().read(1);
 
         posX = getPacket().getIntegers().read(0);
         posY = getPacket().getIntegers().read(1);
@@ -42,13 +38,6 @@ public class ServerEntityTeleport extends AntiCheatEvent {
         return onGround;
     }
 
-    public float getYaw() {
-        return yaw;
-    }
-
-    public float getPitch() {
-        return pitch;
-    }
 
     public double getPosX() {
         return posX / 32.0D;
