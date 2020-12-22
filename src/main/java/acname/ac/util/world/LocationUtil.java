@@ -191,6 +191,56 @@ public class LocationUtil {
         }
     }
 
+    public boolean isUnderBlock() {
+        try {
+            Method getWorldHandle = world.getClass().getMethod("getHandle");
+            Object nmsWorld = getWorldHandle.invoke(world);
+            Object box = aabb.getConstructor(double.class, double.class, double.class, double.class, double.class, double.class)
+                    .newInstance(
+                            getX() - .3,
+                            getY(),
+                            getZ() - .3,
+                            getX() + .3,
+                            getY() + 2.3001,
+                            getZ() + .3
+                    );
+
+            return PluginUtils.getVersion().equals(PluginUtils.ServerVersion.v1_8_R3) ?
+                    ((Collection<?>) ReflectionUtils.getInvokedMethod(getCubes, nmsWorld, box)).size() > 0 :
+                    ((Collection<?>) ReflectionUtils.getInvokedMethod(getCubes1_12, nmsWorld, null, box)).size() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+
+    public boolean isInBlock() {
+        try {
+            Method getWorldHandle = world.getClass().getMethod("getHandle");
+            Object nmsWorld = getWorldHandle.invoke(world);
+            Object box = aabb.getConstructor(double.class, double.class, double.class, double.class, double.class, double.class)
+                    .newInstance(
+                            getX() - .3,
+                            getY(),
+                            getZ() - .3,
+                            getX() + .3,
+                            getY() + 1.8,
+                            getZ() + .3
+                    );
+
+            return PluginUtils.getVersion().equals(PluginUtils.ServerVersion.v1_8_R3) ?
+                    ((Collection<?>) ReflectionUtils.getInvokedMethod(getCubes, nmsWorld, box)).size() > 0 :
+                    ((Collection<?>) ReflectionUtils.getInvokedMethod(getCubes1_12, nmsWorld, null, box)).size() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+
     @Override
     public String toString() {
         return "LocationUtil{" +
