@@ -5,6 +5,10 @@ import java.nio.charset.StandardCharsets;
 
 public final class HWID {
 
+    public static void main(String[] args) {
+        System.out.println(getHWIDwithoutEncoding());
+    }
+
     public static final String HWID = getHWID();
 
     private static String getHWIDwithoutEncoding() {

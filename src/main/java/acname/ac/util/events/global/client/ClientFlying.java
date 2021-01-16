@@ -29,7 +29,7 @@ public class ClientFlying extends AntiCheatEvent {
     World world;
     Player player;
 
-    public ClientFlying(PacketEvent packetEvent, LocationUtil fromInput) {
+    public ClientFlying(final PacketEvent packetEvent, final LocationUtil fromInput) {
         super(packetEvent);
         this.player = packetEvent.getPlayer();
 
@@ -75,7 +75,7 @@ public class ClientFlying extends AntiCheatEvent {
 
         isOnGround = packetEvent.getPacket().getBooleans().read(0);
         deltaX = to.getX() - from.getX();
-        deltaZ = to.getZ() - from.getX();
+        deltaZ = to.getZ() - from.getZ();
         deltaXZ = MathUtil.hypot(deltaX, deltaZ);
         deltaY = to.getY() - from.getY();
 
