@@ -58,7 +58,7 @@ _Q: How to add a Check?_
 ```java
     @Override
     public void process(AntiCheatEvent event) {
-        if (event instanceof ClientSwing) {
+        if (event instanceof ClientFlying) {
             float pitch = ((ClientFlying) event).getTo().getPitch();
             if (pitch > 90) {
                 flag("illegal pitch -> " + pitch);
