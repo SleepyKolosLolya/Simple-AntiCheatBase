@@ -85,7 +85,7 @@ Q: How to cache config values? I heard it is useful for optimization.
         // Output to spigot chat
         Bukkit.broadcastMessage(themeCachedValue.replace("%iseasy%, valueFromConfig));
         
-        // Output: "You ask, is it easy? The program will give the answer: true"
+        // Output: You ask, is it easy? The program will give the answer: true
         
     }
 
