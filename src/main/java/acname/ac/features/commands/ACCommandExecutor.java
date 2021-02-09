@@ -5,7 +5,7 @@ import acname.ac.features.commands.actions.Debug;
 import acname.ac.features.commands.actions.Help;
 import acname.ac.features.commands.actions.ThemeChanger;
 import acname.ac.Global;
-import acname.ac.util.chat.ChatManager;
+import acname.ac.util.chat.ChatHelper;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -29,9 +29,9 @@ public class ACCommandExecutor extends Global implements CommandExecutor {
                         return acCommand.onCommand(commandSender, command, label, strings);
                     }
                 }
-                commandSender.sendMessage(ChatManager.unknownCommand(strings[0]));
+                commandSender.sendMessage(ChatHelper.unknownCommand(strings[0]));
             } else {
-                commandSender.sendMessage(ChatManager.unknownCommand("none"));
+                commandSender.sendMessage(ChatHelper.unknownCommand("none"));
             }
             return true;
         }

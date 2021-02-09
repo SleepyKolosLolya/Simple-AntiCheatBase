@@ -47,7 +47,7 @@ public class ProtocolLibListener {
             public void onPacketReceiving(PacketEvent event) {
                 int id = event.getPacket().getIntegers().read(0);
                 // Some checks can be broken bc of this shit so yes you need to kick player if (id <= 0)
-                if (id <= 0) {
+                if (id < 0) {
                     Bukkit.getScheduler().runTask(Global.PLUGIN, () -> event.getPlayer().kickPlayer("null"));
                     return;
                 }

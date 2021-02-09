@@ -2,7 +2,7 @@ package acname.ac.features.commands.actions;
 
 import acname.ac.features.commands.AbstractCommand;
 import acname.ac.Global;
-import acname.ac.util.chat.ChatManager;
+import acname.ac.util.chat.ChatHelper;
 import acname.ac.util.data.Data;
 import acname.ac.util.data.PluginUtils;
 import org.bukkit.command.Command;
@@ -22,16 +22,16 @@ public class Alerts extends AbstractCommand {
             Data data = PluginUtils.getDataByUUID(((Player) sender).getUniqueId());
             data.alerts = !data.alerts;
             sender.sendMessage(
-                    ChatManager.colorCodes(
-                            ChatManager.prefixReplace(
-                                    ChatManager.LanguageAccess.getString(
+                    ChatHelper.colorCodes(
+                            ChatHelper.prefixReplace(
+                                    ChatHelper.getString(
                                             (data.alerts ? "onAlertsEnabled" : "onAlertsDisabled")
                                     )
                             )
                     )
             );
         } else {
-            Global.LOGGER.info(ChatManager.LanguageAccess.prefix() + "You can't execute this command in console");
+            Global.LOGGER.info(ChatHelper.prefix() + "You can't execute this command in console");
         }
         return true;
     }

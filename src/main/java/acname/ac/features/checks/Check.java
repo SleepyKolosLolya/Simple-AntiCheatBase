@@ -6,7 +6,8 @@ import acname.ac.api.CheckType;
 import acname.ac.api.util.DevelopmentState;
 import acname.ac.api.util.LimitedFloat;
 import acname.ac.Global;
-import acname.ac.util.chat.ChatManager;
+import acname.ac.util.chat.ChatHelper;
+import acname.ac.util.config.ConfigCache;
 import acname.ac.util.data.Data;
 import acname.ac.util.events.AntiCheatEvent;
 import com.comphenix.protocol.PacketType;
@@ -97,6 +98,10 @@ public abstract class Check extends Global {
         flag(verbose, 1);
     }
 
+    public void flag(float mp) {
+        flag("", mp);
+    }
+
     public void flag() {
         flag("", 1);
     }
@@ -114,7 +119,7 @@ public abstract class Check extends Global {
     }
 
     public String getPunishment() {
-        return Global.getConfig().getString(getConfigLocation() + ".punishment");
+        return ConfigCache.Config.getString(getConfigLocation() + ".punishment");
     }
 
     public boolean isDebug() {
@@ -134,8 +139,8 @@ public abstract class Check extends Global {
             for (Player on : Bukkit.getOnlinePlayers()) {
                 if (on.hasPermission("acb.debug")) {
                     on.sendMessage(VERBOSE.matcher(
-                            ChatManager.colorCodes(
-                                    ChatManager.LanguageAccess.getString("debug")))
+                            ChatHelper.colorCodes(
+                                    ChatHelper.getString("debug")))
                             .replaceAll(Matcher.quoteReplacement(verbose))
                     );
                 }
@@ -144,7 +149,7 @@ public abstract class Check extends Global {
     }
 
     public int getBanVL() {
-        return Global.getConfig().getInt(getConfigLocation() + ".banVL");
+        return ConfigCache.Config.getInteger(getConfigLocation() + ".banVL");
     }
 
     public void setBanVL(float banVL) {

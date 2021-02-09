@@ -27,6 +27,17 @@ new:
   alerts: "%prefix%&f%player%&7 failed&f %check%&7. [&7x%current_vl%&7]"
 
   # PlaceHolders:
+  #  - %player% - Potential cheater
+  #  - %check% - Check name
+  #  - %ds% - Development state of the check
+  #  - %vladd% - The value of added violations
+  #  - %current_vl% - The violation level for this check
+  #  - %verbose% - Special info for this special anticheat alert (Default one can be edited below)
+  alertinfo: "%prefix%&7Detected for cheats! \n&8»&7 Development State:&6 %ds% \n&8»&7 Added Violations:&6 %vladd% \n\n&8»&7 %verbose%"
+
+  defaultalertverbose: "No Info"
+
+  # PlaceHolders:
   #  - "%player%" - Potential cheater
   #  - "%verbose%" - Debug message
   debug: "&8[&cDEBUG&8] &7%verbose%"

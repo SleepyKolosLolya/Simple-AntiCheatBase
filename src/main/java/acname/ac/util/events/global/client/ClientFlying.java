@@ -2,7 +2,7 @@ package acname.ac.util.events.global.client;
 
 import acname.ac.util.data.Data;
 import acname.ac.util.world.LocationUtil;
-import acname.ac.util.java.MathUtil;
+import acname.ac.util.java.SMath;
 import acname.ac.util.data.PluginUtils;
 import acname.ac.util.events.AntiCheatEvent;
 import com.comphenix.protocol.events.PacketEvent;
@@ -76,7 +76,7 @@ public class ClientFlying extends AntiCheatEvent {
         isOnGround = packetEvent.getPacket().getBooleans().read(0);
         deltaX = to.getX() - from.getX();
         deltaZ = to.getZ() - from.getZ();
-        deltaXZ = MathUtil.hypot(deltaX, deltaZ);
+        deltaXZ = SMath.hypot(deltaX, deltaZ);
         deltaY = to.getY() - from.getY();
 
         deltaPitch = to.getPitch() - from.getPitch();

@@ -6,7 +6,7 @@ import acname.ac.util.events.AntiCheatEvent;
 import acname.ac.util.events.global.client.ClientAction;
 import acname.ac.util.events.global.client.ClientFlying;
 import acname.ac.util.events.global.server.ServerVelocity;
-import acname.ac.util.java.MathUtil;
+import acname.ac.util.java.SMath;
 import acname.ac.util.world.LocationUtil;
 import com.comphenix.protocol.wrappers.EnumWrappers;
 import org.bukkit.OfflinePlayer;
@@ -51,7 +51,7 @@ public class Data {
     public int airTicks = 0;
     public int ticksSinceSprint = 0;
     public int underBlocksTicks = 0;
-    public MathUtil.Velocity lastVelocity = null;
+    public SMath.Velocity lastVelocity = null;
     public long lastVelocityMS = -1;
     public long lastServerTeleport = -1;
     public boolean isSprinting = false;

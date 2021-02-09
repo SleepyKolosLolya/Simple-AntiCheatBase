@@ -1,7 +1,7 @@
 package acname.ac.features.commands.actions;
 
 import acname.ac.features.commands.AbstractCommand;
-import acname.ac.util.chat.ChatManager;
+import acname.ac.util.chat.ChatHelper;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +18,7 @@ public class Help extends AbstractCommand {
 
         // Permission is already checked in ACCommandExecutor.java
         try {
-            sender.sendMessage(ChatManager.prefixReplace(ChatManager.LanguageAccess.getString("help")));
+            sender.sendMessage(ChatHelper.prefixReplace(ChatHelper.getString("help")));
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();

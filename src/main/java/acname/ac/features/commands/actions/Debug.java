@@ -3,7 +3,7 @@ package acname.ac.features.commands.actions;
 import acname.ac.features.commands.AbstractCommand;
 import acname.ac.features.checks.Check;
 import acname.ac.Global;
-import acname.ac.util.chat.ChatManager;
+import acname.ac.util.chat.ChatHelper;
 import acname.ac.util.data.Data;
 import acname.ac.util.data.PluginUtils;
 import org.bukkit.command.Command;
@@ -29,33 +29,33 @@ public class Debug extends AbstractCommand {
                     if (check.getConfigName().equalsIgnoreCase(checkName)) {
                         check.debug = !check.debug;
                         sender.sendMessage(
-                                ChatManager.colorCodes(
-                                        ChatManager.LanguageAccess.getString(check.debug ? "onDebugEnabled" : "onDebugDisabled")
-                                                .replace("%prefix%", ChatManager.LanguageAccess.prefix())
+                                ChatHelper.colorCodes(
+                                        ChatHelper.getString(check.debug ? "onDebugEnabled" : "onDebugDisabled")
+                                                .replace("%prefix%", ChatHelper.prefix())
                                 )
                         );
                         return true;
                     }
                 }
                 sender.sendMessage(
-                        ChatManager.colorCodes(
-                                ChatManager.LanguageAccess.getString("unknownCheck")
-                                        .replace("%prefix%", ChatManager.LanguageAccess.prefix())
+                        ChatHelper.colorCodes(
+                                ChatHelper.getString("unknownCheck")
+                                        .replace("%prefix%", ChatHelper.prefix())
                                         .replace("%arg%", checkName)
                         )
                 );
             } else {
                 sender.sendMessage(
-                        ChatManager.colorCodes(
-                                ChatManager.LanguageAccess.getString("wrongNumberOfArguments")
-                                        .replace("%prefix%", ChatManager.LanguageAccess.prefix())
+                        ChatHelper.colorCodes(
+                                ChatHelper.getString("wrongNumberOfArguments")
+                                        .replace("%prefix%", ChatHelper.prefix())
                                         .replace("%exp%", 2 + "")
                                         .replace("%args_length%", args.length + "")
                         )
                 );
             }
         } else {
-            Global.LOGGER.info(ChatManager.LanguageAccess.prefix() + "You can't execute this command in console");
+            Global.LOGGER.info(ChatHelper.prefix() + "You can't execute this command in console");
             return true;
         }
         return true;

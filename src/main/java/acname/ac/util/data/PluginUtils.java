@@ -2,7 +2,7 @@ package acname.ac.util.data;
 
 import acname.ac.features.checks.Check;
 import acname.ac.Global;
-import acname.ac.util.chat.ChatManager;
+import acname.ac.util.chat.ChatHelper;
 import acname.ac.util.events.AntiCheatEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -29,7 +29,7 @@ public final class PluginUtils implements Listener {
 
     public static void flag(final Check check, final float multiplier, final Data data, final String verbose) {
 
-        TextComponent msg = ChatManager.generateVerboseLog(data, check, verbose, multiplier);
+        TextComponent msg = ChatHelper.generateVerboseLog(data, check, verbose, multiplier);
 
         for (Player on : Bukkit.getOnlinePlayers()) {
             if (on.hasPermission("abc.alerts")) {

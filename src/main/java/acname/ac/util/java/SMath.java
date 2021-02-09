@@ -4,12 +4,18 @@ import acname.ac.util.bukkit.ReflectionUtils;
 import com.google.common.collect.Iterables;
 import org.bukkit.util.Vector;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
-public final class MathUtil {
+/**
+ * Special Math class
+ *
+ * @author koloslolya, NikV2
+ */
+public final class SMath {
 
     // ---------------------------------{ Faster than JVM 8 }--------------------------------- //
     private static final double DEGREES_TO_RADIANS = 0.017453292519943295;
@@ -44,7 +50,7 @@ public final class MathUtil {
      * @author koloslolya
      */
     public static long gcd(long limit, long a, long b) {
-        return b <= limit ? a : MathUtil.gcd(limit, b, a % b);
+        return b <= limit ? a : SMath.gcd(limit, b, a % b);
     }
 
     /**
@@ -96,7 +102,7 @@ public final class MathUtil {
         return (float) Math.cos(radians);
     }
 
-    private MathUtil() { /* Empty */ }
+    private SMath() { /* Empty */ }
 
     /**
      * A much cleaner way of returning the distinct count
@@ -400,11 +406,11 @@ public final class MathUtil {
         }
 
         public double getVelocityXZ() {
-            return MathUtil.hypot(x, z);
+            return SMath.hypot(x, z);
         }
 
         public double getXYZHypot() {
-            return MathUtil.hypot(x, y, z);
+            return SMath.hypot(x, y, z);
         }
 
         public double getVelocityAbsY() {
@@ -412,4 +418,11 @@ public final class MathUtil {
         }
 
     }
+
+    private BigDecimal round(final float f, int times) {
+        BigDecimal bd = new BigDecimal(Float.toString(f));
+        bd = bd.setScale(times, 4);
+        return bd;
+    }
+
 }
