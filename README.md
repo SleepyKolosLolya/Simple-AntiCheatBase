@@ -69,6 +69,30 @@ _Q: How to add a Check?_
 
 ```<---                    --->```
 
+Q: How to cache config values? I heard it is useful for optimization.
+
+**A: Use ConfigCache.java for it!**
+
+```java
+    public static void tutorialValueCaching() {
+    
+        // Getting value from config with "isEasy" key
+        String valueFromConfig = ConfigCache.Config.getString("isEasy");
+        
+        // ConfigCache.Language.getString() method automatically searches for a given theme
+        String themeCachedValue = ConfigCache.Language.getString("tutorialValueCaching");
+        
+        // Output to spigot chat
+        Bukkit.broadcastMessage(themeCachedValue.replace("%iseasy%, valueFromConfig));
+        
+        // Output: "You ask, is it easy? The program will give the answer: true"
+        
+    }
+
+```
+
+```<---                    --->```
+
 Q: Should it only support 1.8?
 
 **A: No. You can use any version of the spigot with this base without fear of incompatibility with the version**
@@ -85,13 +109,6 @@ Q: And what are the dependencies of this project?
 Q: What about performance? There must be some problems?
 
 A: **This base was tested with ~15 common checks with stress test higher than 75 players and have stable 20 TPS!**
-
-```<---                    --->```
-
-_In the future:_
-1) There will be a stronger API part.
-2) Config Caching and Permission Caching.
-3) Complete TextComponent in verbose method.
 
 ```<---                    --->```
 
