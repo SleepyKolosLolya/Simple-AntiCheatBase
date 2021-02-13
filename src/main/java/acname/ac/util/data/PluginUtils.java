@@ -3,6 +3,7 @@ package acname.ac.util.data;
 import acname.ac.features.checks.Check;
 import acname.ac.Global;
 import acname.ac.util.chat.ChatHelper;
+import acname.ac.util.config.ConfigCache;
 import acname.ac.util.events.AntiCheatEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -36,6 +37,7 @@ public final class PluginUtils implements Listener {
                 if (dataMap.get(on.getUniqueId()).alerts) on.spigot().sendMessage(msg);
             }
         }
+        
 
         Check c = data.checkFinder(check.getClass());
 
