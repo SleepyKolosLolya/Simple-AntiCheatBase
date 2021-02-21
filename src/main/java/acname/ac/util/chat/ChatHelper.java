@@ -20,15 +20,17 @@ public final class ChatHelper {
 
 
     public static TextComponent generateVerboseLog(Data data, Check check, String verbose, float multiplier) {
-        TextComponent mainMessage = new TextComponent(placeholder((String) ConfigCache.Language.getThemeValue("alerts"), data, check));
 
-        mainMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(generateVerbose(data, check, verbose, multiplier)).create()));
+        TextComponent mainMessage = new TextComponent(placeholder(
+                (String) ConfigCache.Language.getThemeValue("alerts"), data, check, verbose, multiplier));
+
+        mainMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(placeholder(
+                (String) ConfigCache.Language.getThemeValue("alertinfo"), data, check, verbose, multiplier)).create()));
 
         return mainMessage;
     }
 
-    public static String generateVerbose(Data data, Check check, String verbose, float multiplier) {
-        String var1 = (String) ConfigCache.Language.getThemeValue("alertinfo");
+    public static String placeholder(String var1, Data data, Check check, String verbose, float multiplier) {
 
         var1 = prefixReplace(var1);
         var1 = var1.replace("%player%", Objects.requireNonNull(data.getPlayer().getName()));
@@ -47,15 +49,6 @@ public final class ChatHelper {
         message = message.replace("%prefix%", prefix());
         message = message.replace("%unknown_command%", command);
         return message;
-    }
-
-    public static String placeholder(String str, Data data, @NotNull Check check) {
-        str = colorCodes(str);
-        str = prefixReplace(str);
-        str = str.replace("%player%", Objects.requireNonNull(data.getPlayer().getName()));
-        str = str.replace("%check%", check.getVerboseName());
-        str = str.replace("%current_vl%", data.checkFinder(check.getClass()).getVL().getValue() + "");
-        return str;
     }
 
     public static String colorCodes(String str) {
