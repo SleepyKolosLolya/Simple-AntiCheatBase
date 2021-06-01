@@ -52,6 +52,7 @@ public final class PluginUtils implements Listener {
     public static void handle(AntiCheatEvent event) {
         Player player = event.getPlayer();
         getDataByUUID(player.getUniqueId()).handle(event);
+        ProtocolLibListener.ticksSent.put(event.getPlayer(), ArrayListMultimap.create());
     }
 
     public static Data getDataByUUID(UUID id) {
@@ -71,6 +72,46 @@ public final class PluginUtils implements Listener {
     public enum ServerVersion {
         v1_8_R3,
         v1_12_R1
+    }
+    
+    
+    public static void velocity(Player p, Vector v) {
+        try {
+
+            PacketContainer packet = new PacketContainer(PacketType.Play.Server.ENTITY_VELOCITY);
+
+            packet.getModifier().writeDefaults();
+            packet.getIntegers().write(0, p.getEntityId());
+            packet.getIntegers().write(1, (int) (v.getX() * 800));
+            packet.getIntegers().write(2, (int) (v.getY() * 800));
+            packet.getIntegers().write(3, (int) (v.getZ() * 800));
+
+            ProtocolLibrary.getProtocolManager().sendServerPacket(p, packet);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    public static void teleport(Player p, Location loc) {
+        try {
+
+            PacketContainer packet = new PacketContainer(PacketType.Play.Server.POSITION);
+
+            packet.getModifier().writeDefaults();
+            packet.getDoubles().write(0, loc.getX());
+            packet.getDoubles().write(1, loc.getY());
+            packet.getDoubles().write(2, loc.getZ());
+            packet.getFloat().write(0, loc.getYaw());
+            packet.getFloat().write(1, loc.getPitch());
+
+            ProtocolLibrary.getProtocolManager().sendServerPacket(p, packet);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 
 }
